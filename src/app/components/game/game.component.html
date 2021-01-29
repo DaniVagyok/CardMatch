@@ -1,1 +1,8 @@
 <p>game works!</p>
+<p>Click counter: {{clickCounter}}</p>
+
+    <mat-card *ngFor="let card of cards; index as i" (click)="clickedOnCard(card)">
+        <mat-card-title *ngIf=card.flipped>{{cards[i].value}}</mat-card-title>
+    </mat-card>
+
+    <button *ngIf="isGameOver" mat-raised-button color="primary" (click)="replay()">Újrakezdés</button>
