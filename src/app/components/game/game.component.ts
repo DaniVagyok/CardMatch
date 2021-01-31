@@ -14,13 +14,16 @@ export class GameComponent implements OnInit {
   cards: Card[];
   flippedCards: Card[];
   matchedCards: Card[];
+  icons: string[];
 
   isGameOver: boolean;
   clickCounter: number;
   canClick: boolean;
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+       this.icons=['home', 'backup', 'favorite', 'info'];
+     }
 
   ngOnInit(): void {
     this.pairnum = this.route.snapshot.paramMap.get('pairnum');
@@ -36,15 +39,14 @@ export class GameComponent implements OnInit {
     this.matchedCards = new Array();
     this.cards = new Array();
     for (let i = 0; i < pn; i++) {
-      this.cards.push(new Card(i));
-      this.cards.push(new Card(i));
+      this.cards.push(new Card(this.icons[i]));
+      this.cards.push(new Card(this.icons[i]));
     }
   }
 
   clickedOnCard(card: Card) {
-    console.log(this.canClick);
     if (!card.flipped && this.canClick) {
-    this.clickCounter++;
+      this.clickCounter++;
     card.flipped = true;
       this.flippedCards.push(card);
       if (this.flippedCards.length == 2) {
@@ -97,6 +99,9 @@ export class GameComponent implements OnInit {
         array[i] = array[j];
         array[j] = temp;
     }
+}
+navToMain(){
+  this.router.navigate(['']);
 }
 
 }

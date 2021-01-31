@@ -1,5 +1,20 @@
-<div>
-    <p>Hány pár legyen?</p>
-    <input type="number" #box>
-    <button (click)="submit(box.value)">Tovább</button>
-  </div>
+<div class="container col">
+    <mat-card>
+      <div class="mx-2">
+        <h1>Szabályok</h1>
+        <li>Kattints két kártyára</li>
+        <li>Ha a két kártya megegyezik, siker</li>
+        <li>Ha nem, 2 másodperc után visszafordulnak</li>
+        <li>A cél, hogy minden kártya felfordítva legyen</li>
+      </div>
+      <div class="mt-4">
+        <h1>Hány pár legyen?</h1>
+          <mat-form-field class="formfield" appearance="outline">
+            <input matInput type="number" placeholder="min 3 max 10" min="3" max="10" #box>
+          </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="submit(box.value)">Tovább</button>
+      </div>
+    </mat-card>
+</div>

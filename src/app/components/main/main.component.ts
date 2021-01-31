@@ -8,14 +8,22 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class MainComponent implements OnInit {
   pairnum: number;
+  invalidPairnum: boolean;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.invalidPairnum=false;
   }
-  
-  submit(num){
-    this.router.navigate(['/game', {pairnum: num}]);
+
+  submit(num) {
+    if (num >= 3 && num <= 10) {
+      this.invalidPairnum = true;
+      this.router.navigate(['/game', { pairnum: num }]);
+    }
+    else {
+      this.invalidPairnum = false;
+    }
   }
 }
