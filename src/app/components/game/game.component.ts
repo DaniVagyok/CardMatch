@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router) {
-       this.icons=['home', 'backup', 'favorite', 'info'];
+       this.icons=['home', 'play_circle', 'favorite', 'info', 'settings', 'search', 'schedule', 'mic', 'visibility', 'store'];
      }
 
   ngOnInit(): void {
@@ -46,10 +46,10 @@ export class GameComponent implements OnInit {
 
   clickedOnCard(card: Card) {
     if (!card.flipped && this.canClick) {
-      this.clickCounter++;
-    card.flipped = true;
+      card.flipped = true;
       this.flippedCards.push(card);
       if (this.flippedCards.length == 2) {
+        this.clickCounter++;
         this.checkMatch();
       }
     }
@@ -78,12 +78,10 @@ export class GameComponent implements OnInit {
   }
 
   gameOver() {
-    console.log('Vége');
     this.isGameOver = true;
   }
 
   correct(card: Card) {
-    console.log('Találat');
     this.matchedCards.push(card);
     this.flippedCards = [];
   }
@@ -99,9 +97,9 @@ export class GameComponent implements OnInit {
         array[i] = array[j];
         array[j] = temp;
     }
-}
-navToMain(){
-  this.router.navigate(['']);
-}
+  }
+  navToMain(){
+    this.router.navigate(['']);
+  }
 
 }
