@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 
 import { Card } from '../../models/Card';
+
 
 @Component({
   selector: 'app-game',
@@ -20,9 +21,11 @@ export class GameComponent implements OnInit {
   clickCounter: number;
   canClick: boolean;
 
+
   constructor(private route: ActivatedRoute,
     private router: Router) {
        this.icons=['home', 'play_circle', 'favorite', 'info', 'settings', 'search', 'schedule', 'mic', 'visibility', 'store'];
+
      }
 
   ngOnInit(): void {
